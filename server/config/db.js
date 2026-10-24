@@ -13,9 +13,12 @@ const requiredEnvironmentVariable = (name) => {
 const ssl = process.env.DB_SSL === 'true'
   ? {
       rejectUnauthorized: true,
-      ...(process.env.DB_SSL_CA
-        ? { ca: fs.readFileSync(process.env.DB_SSL_CA, 'utf8') }
-        : {}),
+      ca: process.env.DB_SSL_CA_CONTENT
+        ? process.env.DB_SSL_CA_CONTENT.replace(/\\n/g, '\n')
+        : fs.readFileSync(
+            process.env.DB_SSL_CA || './certs/ca.pem',
+            'utf8'
+          ),
     }
   : undefined;
 

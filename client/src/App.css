@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Edu NSW ACT Cursive', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: calc(100vh - 180px);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .show > .nav-link {
+  color: #ffbe33;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #222831 !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.header-actions {
+  flex-wrap: wrap;
+}
+
+.icon {
+  color: rgb(244, 240, 244);
+  cursor: pointer;
+}
+
+.icon:hover {
+  transition: all 0.5s ease-in-out;
+  color: #ffbe33;
+}
+
+.hero {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-image: url('./assets/hero-bg.jpg');
+}
+
+.hero img {
+  height: 100vh;
+  position: relative;
+}
+
+.hero .carousel-item .carousel-caption {
+  text-align: start;
+  margin-bottom: 250px;
+  position: absolute;
+  left: 100px;
+}
+
+.hero .carousel-item .carousel-caption p {
+  text-align: start;
+}
+
+.hero .carousel-indicators {
+  margin-left: 100px;
+  margin-bottom: 250px;
+  width: 100px;
+  position: absolute;
+  z-index: 1;
+}
+
+.discountimg:hover {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.dixountbox {
+  background-color: #222831;
+  border-radius: 8px;
+}
+
+.discountimg img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 10px;
+  border: 5px solid yellow;
+}
+
+.foodmenu img {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.foodmenu .cardimg {
+  background-color: rgb(219, 229, 237);
+  text-align: center;
+  border-bottom-left-radius: 100px;
+}
+
+.foodmenu .card {
+  background-color: #222831;
+  color: #fff;
+  height: 100%;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.aboout-img img {
+  height: 500px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.aboutsection {
+  background-color: #222831;
+  color: #fff;
+}
+
+.secform {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.secform form {
+  width: min(100%, 600px);
+  height: auto;
+  padding: 10px;
+  margin: 100px 50px;
+}
+
+.secform form input,
+.secform form select {
+  height: 50px;
+}
+
+.secform form h1 {
+  color: black;
+}
+
+.secform .gmap iframe {
+  width: 100%;
+  height: 305px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.secform .gmap {
+  margin: 160px 50px;
+  width: min(100%, 600px);
+}
+
+footer {
+  background-color: #222831;
+  padding: 10px;
+}
+
+footer .contop {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+footer .con1,
+footer .con2,
+footer .con3 {
+  justify-items: center;
+}
+
+footer .con1 h1,
+footer .con2 h1,
+footer .con2 p,
+footer .con3 h1,
+footer .con3 h2,
+footer .con3 h3,
+footer .conbottom h1 {
+  color: #fff;
+}
+
+footer .con1 {
+  width: 400px;
+}
+
+footer .con1 .location h1,
+footer .call h1,
+footer .email h1 {
+  font-size: 20px;
+  margin-left: 3px;
+  color: #fff;
+  font-weight: 350;
+}
+
+footer .con1 .location,
+footer .call,
+footer .email {
+  display: flex;
+  padding: 2px;
+}
+
+footer .con1 .location h1:hover,
+footer .con1 .call h1:hover,
+footer .con1 .email h1:hover {
+  transition: all 0.2s ease-in-out;
+  color: #ffbe33;
+}
+
+footer .con2 {
+  width: 400px;
+}
+
+footer .con2 p {
+  font-weight: 350;
+  text-align: center;
+}
+
+footer .con2 .icons img {
+  height: 35px;
+  width: 35px;
+}
+
+footer .con3 {
+  width: 400px;
+}
+
+footer .con3 h2,
+footer .con3 h3 {
+  font-size: 15px;
+  font-weight: 350;
+  margin-top: 10px;
+}
+
+footer .conbottom h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+footer .conbottom {
+  margin: 40px;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.error-message {
+  font-size: 0.875em;
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+@media (max-width: 1440px) {
+  .hero .carousel-item .carousel-caption {
+    left: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: 520px;
+  }
+
+  .hero img {
+    height: 520px;
+  }
+
+  .hero .carousel-item .carousel-caption {
+    margin-bottom: 140px;
+    left: 30px;
+  }
+
+  .secform {
+    flex-direction: column;
+  }
+
+  .secform .gmap {
+    margin: 0 0 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    height: 420px;
+  }
+
+  .hero img {
+    height: 420px;
+  }
+
+  .hero .carousel-item .carousel-caption {
+    margin-bottom: 100px;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+  }
+
+  .hero .carousel-item .carousel-caption p,
+  .hero .carousel-item .carousel-caption h5 {
+    text-align: center;
+  }
+
+  .hero .carousel-indicators {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 150px;
+  }
+
+  footer .contop {
+    display: block;
+    width: 100%;
+  }
+
+  footer .con1,
+  footer .con2,
+  footer .con3 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .hero {
+    height: 350px;
+  }
+
+  .hero img {
+    height: 350px;
+  }
+
+  .hero .carousel-item .carousel-caption {
+    margin-bottom: 20px;
+    top: 40px;
+    left: 0;
+    right: 0;
+  }
+
+  .hero .carousel-indicators {
+    margin-bottom: 40px;
+  }
+
+  .discountimg img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .secform form {
+    margin: 40px 0;
+  }
+
+  .secform .gmap iframe {
+    width: 100%;
+    height: 280px;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+
+  .header-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero {
+    height: 300px;
+  }
+
+  .hero img {
+    height: 300px;
+  }
+
+  .hero .carousel-item .carousel-caption h5 {
+    font-size: 1.1rem;
+  }
+
+  .hero .carousel-item .carousel-caption p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+}

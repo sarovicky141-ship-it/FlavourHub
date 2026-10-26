@@ -38,3 +38,15 @@ CREATE TABLE IF NOT EXISTS bookings (
   INDEX idx_bookings_booking_date (booking_date),
   INDEX idx_bookings_email (email)
 );
+
+
+
+
+USE flavourhub_db;
+
+SELECT *
+FROM bookings
+ORDER BY id DESC;
+
+
+SELECT * FROM bookings;

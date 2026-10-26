@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { createBooking } from '../services/api';
 
 const initialValues = {
@@ -38,12 +39,19 @@ const validate = (values, minimumDate) => {
 };
 
 function BookingPage() {
+  const location = useLocation();
   const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const submissionInProgress = useRef(false);
   const [minimumDate] = useState(getLocalDate);
+
+  useEffect(() => {
+    if (location.hash === '#location-map') {
+      document.getElementById('location-map')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location.hash]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -149,7 +157,7 @@ function BookingPage() {
         )}
       </form>
 
-      <div className="gmap">
+      <div className="gmap" id="location-map">
         <iframe
           title="FlavourHub location map"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.905641730466!2d80.22325137483915!3d12.84937068745485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52678b6ec7b719%3A0xc0cf6f565e5669c7!2sSLA%20Institute!5e0!3m2!1sen!2sin!4v1756042143724!5m2!1sen!2sin"

@@ -1,13 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const navItems = [
   { to: '/', label: 'Home' },
-  { to: '/menu', label: 'Menus' },
+  { to: '/menu', label: 'Menu' },
   { to: '/about', label: 'About' },
   { to: '/book-table', label: 'Book Table' },
 ];
 
 function Header() {
+  const { items } = useCart();
+  const cartCount = items.reduce((count, item) => count + item.quantity, 0);
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,7 +33,7 @@ function Header() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav mb-2 mb-lg-0">
               {navItems.map((item) => (
                 <li className="nav-item" key={item.to}>
                   <NavLink
@@ -44,10 +48,17 @@ function Header() {
             </ul>
 
             <div className="d-flex align-items-center gap-2 header-actions">
-              <span className="p-2 icon mx-1" aria-label="profile"><i className="bi bi-person" /></span>
-              <span className="p-2 icon mx-1" aria-label="cart"><i className="bi bi-cart-dash" /></span>
-              <span className="p-2 icon mx-1" aria-label="search"><i className="bi bi-search" /></span>
-              <button type="button" className="btn btn-warning">Order Online</button>
+              <NavLink className="header-icon" to="/account" aria-label="Demo account">
+                <i className="bi bi-person" aria-hidden="true" />
+              </NavLink>
+              <NavLink className="header-icon cart-link" to="/cart" aria-label={`Shopping cart, ${cartCount} items`}>
+                <i className="bi bi-cart-dash" aria-hidden="true" />
+                {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+              </NavLink>
+              <NavLink className="header-icon" to="/menu?focus=search" aria-label="Search menu">
+                <i className="bi bi-search" aria-hidden="true" />
+              </NavLink>
+              <NavLink className="btn btn-warning" to="/menu">Order Online</NavLink>
             </div>
           </div>
         </div>

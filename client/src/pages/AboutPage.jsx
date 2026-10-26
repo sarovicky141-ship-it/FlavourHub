@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function AboutPage() {
   const aboutImage = new URL('../assets/about-img.png', import.meta.url).href;
 
@@ -16,9 +18,9 @@ function AboutPage() {
               <p style={{ marginLeft: '30px' }} className="text-start">
                 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
               </p>
-              <button type="button" className="btn btn-warning mx-4">
+              <Link to="/menu" className="btn btn-warning mx-4">
                 Order Online <i className="bi bi-cart-check px-2" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

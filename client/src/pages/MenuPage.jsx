@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import MenuCard from '../components/MenuCard';
 import SectionHeading from '../components/SectionHeading';
 import useMenuItems from '../hooks/useMenuItems';
@@ -6,17 +7,44 @@ import useMenuItems from '../hooks/useMenuItems';
 function MenuPage() {
   const { menuItems, isLoading, error } = useMenuItems();
   const [activeTab, setActiveTab] = useState('all');
+  const [searchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get('q') || '');
+  const searchInput = useRef(null);
 
   const tabs = ['all', 'Pizza', 'Burger'];
-  const filteredItems =
+  useEffect(() => {
+    if (searchParams.get('focus') === 'search') {
+      searchInput.current?.focus();
+    }
+  }, [searchParams]);
+
+  const categoryFilteredItems =
     activeTab === 'all'
       ? menuItems
       : menuItems.filter((item) => item.category === activeTab || item.categorySlug === activeTab);
+  const normalizedSearch = search.trim().toLocaleLowerCase();
+  const filteredItems = categoryFilteredItems.filter((item) =>
+    `${item.name} ${item.description}`.toLocaleLowerCase().includes(normalizedSearch),
+  );
 
   return (
     <section className="menusection py-5 my-5">
       <div className="container">
         <SectionHeading title="Our Menu" />
+
+        <div className="menu-search">
+          <label className="visually-hidden" htmlFor="menu-search">Search menu items</label>
+          <i className="bi bi-search" aria-hidden="true" />
+          <input
+            id="menu-search"
+            ref={searchInput}
+            type="search"
+            className="form-control"
+            placeholder="Search menu"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+        </div>
 
         <div className="foodmenuitems">
           <ul className="nav nav-tabs" role="tablist">

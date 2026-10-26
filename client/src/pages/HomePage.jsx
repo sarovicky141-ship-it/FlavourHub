@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import MenuCard from '../components/MenuCard';
 import SectionHeading from '../components/SectionHeading';
 import useMenuItems from '../hooks/useMenuItems';
@@ -35,7 +36,7 @@ function HomePage() {
                 <div className="carousel-caption d-md-block">
                   <h5>{slide.title}</h5>
                   <p>{slide.text}</p>
-                  <button type="button" className="btn btn-warning">{slide.button}</button>
+                  <Link className="btn btn-warning" to="/menu">{slide.button}</Link>
                 </div>
               </div>
             ))}
@@ -58,9 +59,9 @@ function HomePage() {
                     <div className="discountcntent p-3 m-2 text-center">
                       <h3>Pizza Days</h3>
                       <p>20% Off</p>
-                      <button type="button" className="btn btn-warning rounded-pill">
+                      <Link to="/menu" className="btn btn-warning rounded-pill">
                         Order Online <i className="bi bi-cart-check px-2" />
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -79,9 +80,9 @@ function HomePage() {
                     <div className="discountcntent p-3 m-2 text-center">
                       <h3>Every Friday</h3>
                       <p>30% Off</p>
-                      <button type="button" className="btn btn-warning rounded-pill">
+                      <Link to="/menu" className="btn btn-warning rounded-pill">
                         Order Online <i className="bi bi-cart-check px-2" />
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

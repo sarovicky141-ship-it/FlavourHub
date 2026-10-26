@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Footer() {
   const iconUrls = {
     facebook: new URL('../assets/icons8-facebook-48.png', import.meta.url).href,
@@ -6,39 +8,46 @@ function Footer() {
     instagram: new URL('../assets/icons8-instagram-64.png', import.meta.url).href,
     pinterest: new URL('../assets/icons8-pinterest-50.png', import.meta.url).href,
   };
+  const socialLinks = {
+    facebook: 'https://www.facebook.com/',
+    twitter: 'https://x.com/',
+    linkedin: 'https://www.linkedin.com/',
+    instagram: 'https://www.instagram.com/',
+    pinterest: 'https://www.pinterest.com/',
+  };
 
   return (
     <footer>
       <section className="contop">
         <div className="con1">
-          <h1>Contact Us</h1>
+          <h2>Contact Us</h2>
           <div className="location">
-            <h1>✉︎   Location</h1>
+            <Link to="/book-table#location-map">⌖ &nbsp;Location</Link>
           </div>
           <div className="call">
-            <h1>☏   +91-99 99 99 99 99</h1>
+            <a href="tel:+919999999999">☏ &nbsp;+91-99 99 99 99 99</a>
           </div>
           <div className="email">
-            <h1>✉︎   hello@flavourhub.com</h1>
+            <a href="mailto:hello@flavourhub.com">✉ &nbsp;hello@flavourhub.com</a>
           </div>
         </div>
 
         <div className="con2">
-          <h1>FlavourHub</h1>
+          <h2>FlavourHub</h2>
           <p>
             A foodie destination bringing together bold flavors, freshly baked meals, and welcoming hospitality.
           </p>
           <div className="icons">
-            <img src={iconUrls.facebook} alt="Facebook" />
-            <img src={iconUrls.twitter} alt="Twitter" />
-            <img src={iconUrls.linkedin} alt="LinkedIn" />
-            <img src={iconUrls.instagram} alt="Instagram" />
-            <img src={iconUrls.pinterest} alt="Pinterest" />
+            {Object.entries(iconUrls).map(([social, image]) => (
+              <a key={social} href={socialLinks[social]} target="_blank" rel="noreferrer" aria-label={social}>
+                <img src={image} alt="" />
+              </a>
+            ))}
           </div>
         </div>
 
         <div className="con3">
-          <h1>Opening Hours</h1>
+          <h2>Opening Hours</h2>
           <h2>Everyday</h2>
           <h3>10.00 Am - 10.00 Pm</h3>
         </div>
@@ -46,8 +55,8 @@ function Footer() {
 
       <section>
         <div className="conbottom">
-          <h1>© 2026 All Rights Reserved By FlavourHub</h1>
-          <h1>© Crafted for a better dining experience</h1>
+          <p>© 2026 All Rights Reserved By FlavourHub</p>
+          <p>© Crafted for a better dining experience</p>
         </div>
       </section>
     </footer>

@@ -1,5 +1,15 @@
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+
 function MenuCard({ item }) {
   const imageUrl = new URL(`../assets/${item.image}`, import.meta.url).href;
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    addToCart(item);
+    navigate('/cart');
+  };
 
   return (
     <div className="col-md-4">
@@ -14,8 +24,13 @@ function MenuCard({ item }) {
             <div className="discount d-flex justify-content-between align-items-center">
               <h3>₹{item.price}</h3>
               <div>
-                <button type="button" className="btn btn-warning">
-                  <i className="bi bi-cart-check px-2" />
+                <button
+                  type="button"
+                  className="btn btn-warning"
+                  onClick={handleAddToCart}
+                  aria-label={`Add ${item.name} to cart`}
+                >
+                  <i className="bi bi-cart-check px-2" aria-hidden="true" />
                 </button>
               </div>
             </div>

@@ -1,16 +1,16 @@
 # FlavourHub
 
-FlavourHub is an existing React/Vite restaurant frontend connected to an Express REST API and MySQL. The reservation form is the project's data-collection form; it posts to the API and is stored in MySQL only after a successful insert.
+FlavourHub is a React/Vite restaurant frontend with a local menu catalog and an Express REST API backed by MySQL for table bookings. Booking details are stored in MySQL only after a successful insert.
 
 ## Architecture
 
 ```text
 React 19 + Vite
-  ├── Home, menu, about, and booking routes
-  └── Configurable API client
+  ├── Home, menu, and about routes use client/src/data/menuData.js
+  ├── Booking route uses the configurable API client
         ↓
 Express 5 REST API
-  ├── Routes and request validation
+  ├── Booking route and request validation
   ├── Controllers and centralized error handling
   └── mysql2 connection pool
         ↓
@@ -47,9 +47,9 @@ Edit `server/.env` with the credentials for your local MySQL user. Set `DB_PASSW
 VITE_API_URL=http://localhost:5000/api
 ```
 
-### Create the database
+### Create the booking database
 
-In MySQL Workbench, open and execute `database/schema.sql`. This creates `flavourhub_db`, the menu categories/items tables, and the reservations table. To load the example menu catalog, execute `database/seed.sql` afterward. The seed does not create sample customer reservations.
+In MySQL Workbench, open and execute `database/schema.sql`. This creates `flavourhub_db`, the bookings table, and the existing menu catalog tables. The frontend menu is loaded from `client/src/data/menuData.js`; the MySQL menu tables and `database/seed.sql` are retained but are no longer used by the app.
 
 ### Start the application
 
@@ -74,7 +74,6 @@ The frontend runs at `http://localhost:5173`; the API runs at `http://localhost:
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/health` | Check API and MySQL connectivity |
-| `GET` | `/api/menu` | Read the menu catalog from MySQL |
 | `POST` | `/api/bookings` | Validate and save a reservation |
 
 Reservation JSON:

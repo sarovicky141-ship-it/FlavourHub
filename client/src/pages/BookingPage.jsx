@@ -95,7 +95,7 @@ function BookingPage() {
   };
 
   return (
-    <section className="secform my-5 py-5">
+    <section className="secform">
       <form id="booking-form" onSubmit={handleSubmit} noValidate>
         <h1>Book A Table</h1>
 

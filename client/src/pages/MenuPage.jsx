@@ -2,16 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import MenuCard from '../components/MenuCard';
 import SectionHeading from '../components/SectionHeading';
-import useMenuItems from '../hooks/useMenuItems';
+import { categories, menuItems } from '../data/menuData';
 
 function MenuPage() {
-  const { menuItems, isLoading, error } = useMenuItems();
   const [activeTab, setActiveTab] = useState('all');
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('q') || '');
   const searchInput = useRef(null);
 
-  const tabs = ['all', 'Pizza', 'Burger'];
   useEffect(() => {
     if (searchParams.get('focus') === 'search') {
       searchInput.current?.focus();
@@ -21,7 +19,7 @@ function MenuPage() {
   const categoryFilteredItems =
     activeTab === 'all'
       ? menuItems
-      : menuItems.filter((item) => item.category === activeTab || item.categorySlug === activeTab);
+      : menuItems.filter((item) => item.categorySlug === activeTab);
   const normalizedSearch = search.trim().toLocaleLowerCase();
   const filteredItems = categoryFilteredItems.filter((item) =>
     `${item.name} ${item.description}`.toLocaleLowerCase().includes(normalizedSearch),
@@ -48,14 +46,14 @@ function MenuPage() {
 
         <div className="foodmenuitems">
           <ul className="nav nav-tabs" role="tablist">
-            {tabs.map((tab) => (
-              <li className="nav-item" key={tab} role="presentation">
+            {[{ name: 'All', slug: 'all' }, ...categories].map((tab) => (
+              <li className="nav-item" key={tab.slug} role="presentation">
                 <button
-                  className={`nav-link ${activeTab === tab ? 'active' : ''}`}
+                  className={`nav-link ${activeTab === tab.slug ? 'active' : ''}`}
                   type="button"
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => setActiveTab(tab.slug)}
                 >
-                  {tab === 'all' ? 'All' : tab}
+                  {tab.name}
                 </button>
               </li>
             ))}
@@ -63,11 +61,7 @@ function MenuPage() {
 
           <div className="tab-content py-4">
             <div className="tab-pane fade show active">
-              {isLoading ? (
-                <div className="text-center py-4">Loading menu...</div>
-              ) : error ? (
-                <div className="text-center py-4 text-danger" role="alert">{error}</div>
-              ) : filteredItems.length === 0 ? (
+              {filteredItems.length === 0 ? (
                 <div className="text-center py-4">No menu items found.</div>
               ) : (
                 <div className="row">{filteredItems.map((item) => <MenuCard key={item.id} item={item} />)}</div>

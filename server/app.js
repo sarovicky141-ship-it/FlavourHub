@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const bookingRoutes = require('./routes/bookingRoutes');
-const menuRoutes = require('./routes/menuRoutes');
 const { testConnection } = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -51,7 +50,6 @@ app.get('/api/health', async (req, res) => {
 });
 
 app.use('/api', bookingRoutes);
-app.use('/api', menuRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Route not found' });

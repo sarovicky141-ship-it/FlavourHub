@@ -16,7 +16,11 @@ function MenuCard({ item }) {
       <div className="foodmenu p-3 m-3">
         <div className="card">
           <div className="cardimg">
-            <img src={imageUrl} className="card-img-top" alt={item.name} />
+            <img
+              src={imageUrl}
+              className={`card-img-top ${item.imageShape === 'square' ? 'square-image' : ''}`}
+              alt={item.name}
+            />
           </div>
           <div className="card-body">
             <h5 className="card-title">{item.name}</h5>

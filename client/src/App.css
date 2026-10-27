@@ -155,6 +155,23 @@ header {
   z-index: 1;
 }
 
+.hero .carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  padding: 0;
+  margin: 0 5px;
+  border: 0;
+  border-radius: 50%;
+  background-color: #ffc107;
+  opacity: 0.65;
+}
+
+.hero .carousel-indicators .active {
+  transform: scale(1.4);
+  opacity: 1;
+}
+
 .discountimg:hover {
   transition: 0.3s ease-in-out;
   transform: scale(1.1);
@@ -173,22 +190,65 @@ header {
   border: 5px solid yellow;
 }
 
-.foodmenu img {
+.menusection .row > .col-md-4 {
+  display: flex;
+}
+
+.menusection .foodmenu {
+  display: flex;
+  width: 100%;
+}
+
+.menusection .foodmenu .cardimg {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(219, 229, 237);
+  border-bottom-left-radius: 100px;
+}
+
+.menusection .foodmenu .cardimg img {
   width: 200px;
+  height: auto;
   padding: 10px;
   margin: 10px;
 }
 
-.foodmenu .cardimg {
-  background-color: rgb(219, 229, 237);
-  text-align: center;
-  border-bottom-left-radius: 100px;
+.menusection .foodmenu .cardimg img.square-image {
+  width: 160px;
+  height: 160px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.foodmenu .card {
+.menusection .foodmenu .card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
   background-color: #222831;
   color: #fff;
-  height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menusection .foodmenu .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.menusection .foodmenu .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.menusection .foodmenu .discount {
+  margin-top: auto;
 }
 
 .card-body {
@@ -217,7 +277,7 @@ header {
   width: min(100%, 600px);
   height: auto;
   padding: 10px;
-  margin: 100px 50px;
+  margin: 30px 50px;
 }
 
 .secform form input,
@@ -237,7 +297,7 @@ header {
 }
 
 .secform .gmap {
-  margin: 160px 50px;
+  margin: 30px 50px;
   width: min(100%, 600px);
 }
 
@@ -366,6 +426,23 @@ footer .conbottom {
 
 .menu-search input {
   padding-left: 2.75rem;
+}
+
+.foodmenuitems .nav-tabs {
+  border-bottom-color: #ffc107;
+}
+
+.foodmenuitems .nav-tabs .nav-link {
+  border-color: transparent;
+}
+
+.foodmenuitems .nav-tabs .nav-link:hover,
+.foodmenuitems .nav-tabs .nav-link:focus-visible {
+  border-color: #ffc107;
+}
+
+.foodmenuitems .nav-tabs .nav-link.active {
+  border-color: #ffc107 #ffc107 #fff;
 }
 
 .account-page,

@@ -1,6 +1,10 @@
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace(/\/+$/, '');
+const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
 
 async function request(endpoint, options = {}) {
+  if (!API_URL) {
+    throw new Error('Booking service is not configured. Please try again later.');
+  }
+
   let response;
   try {
     response = await fetch(`${API_URL}${endpoint}`, {
@@ -37,7 +41,6 @@ async function request(endpoint, options = {}) {
   return data;
 }
 
-export const getMenuItems = () => request('/menu');
 export const createBooking = (payload) =>
   request('/bookings', {
     method: 'POST',

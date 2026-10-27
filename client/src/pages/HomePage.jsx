@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import MenuCard from '../components/MenuCard';
 import SectionHeading from '../components/SectionHeading';
-import useMenuItems from '../hooks/useMenuItems';
+import { menuItems } from '../data/menuData';
 
 const heroSlides = [
   { title: 'Veg Pizza', text: 'Fresh mozzarella, basil, capsicum, onion, tomato, mushroom, and spiced paneer.', button: 'Order Online' },
@@ -10,7 +10,6 @@ const heroSlides = [
 ];
 
 function HomePage() {
-  const { menuItems, isLoading, error } = useMenuItems();
   const promoImage = new URL('../assets/o2.jpg', import.meta.url).href;
 
   return (
@@ -96,13 +95,7 @@ function HomePage() {
         <div className="container">
           <SectionHeading title="Our Menu" />
           <div className="row">
-            {isLoading ? (
-              <div className="col-12 text-center py-4">Loading menu...</div>
-            ) : error ? (
-              <div className="col-12 text-center py-4 text-danger" role="alert">{error}</div>
-            ) : (
-              menuItems.slice(0, 6).map((item) => <MenuCard key={item.id} item={item} />)
-            )}
+            {menuItems.slice(0, 6).map((item) => <MenuCard key={item.id} item={item} />)}
           </div>
         </div>
       </section>
